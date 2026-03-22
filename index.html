@@ -4,29 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beyond Boring Software - Think Beyond. Build Better.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #007fbd; --accent: #ff9201; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; }
+        :root {
+            /* Your official brand colors */
+            --primary: #007fbd; /* Brand Blue */
+            --accent: #ff9201;  /* Badge Orange */
+            --bg-deep: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        /* --- Global Reset & Fluids --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth; /* Modern fluid scrolling */
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Animated Fluid Accents in Background --- */
+        .ambient-sphere {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.2;
+            animation: fluidDrift 20s infinite alternate ease-in-out;
+        }
         
-        .hero { text-align: center; padding: 100px 20px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
-        .hero p { color: #cbd5e1; font-size: 1.2rem; margin-bottom: 30px; }
+        /* Ambient Blue Sphere */
+        .ambient-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+        }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        /* Ambient Orange Sphere */
+        .ambient-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            bottom: 10%;
+            right: -100px;
+            animation-delay: -5s; /* Non-synchronized animation */
+        }
 
-        .app-card { background: var(--card); border-radius: 20px; padding: 30px; border: 1px solid #334155; transition: 0.3s; text-decoration: none; color: inherit; display: block; }
-        .app-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        .app-icon { font-size: 40px; color: var(--accent); margin-bottom: 20px; }
-        .app-card h2 { margin-bottom: 10px; font-size: 1.5rem; }
-        .app-card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+        @keyframes fluidDrift {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 50px) scale(1.1); }
+            100% { transform: translate(-20px, 20px) scale(0.9); }
+        }
 
-        footer { text-align: center; padding: 50px; border-top: 1px solid #334155; color: #64748b; font-size: 0.9rem; }
+        /* --- Updated Hero with Banner Integration --- */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 160px 20px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Integrating your provided Play Store Banner URL */
+            background-image: url('https://play-lh.googleusercontent.com/b8vGb-tW4r4yLomFGD7Xc882zxe5-C_FPpgrfaoGJyoOfb5XGqFMA0ozr8_9D0NR-W0=w7680-h4320-rw');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* Dark overlay to make text pop over the banner */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 1) 100%);
+            z-index: 1;
+        }
+
+        .hero * { position: relative; z-index: 2; } /* Put content above overlay */
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, white, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 0px;
+            max-width: 600px;
+        }
+
+        /* --- Main Apps Grid & Cards --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .app-card {
+            background-color: var(--bg-card);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Professional easing */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Modern subtle halo effect on hover */
+        .app-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 127, 189, 0.1) 0%, rgba(15, 23, 42, 0) 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 127, 189, 0.15);
+        }
+
+        .app-card:hover::after { opacity: 1; }
+
+        .app-icon {
+            font-size: 50px;
+            color: var(--accent);
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .app-card h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .app-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* --- Studio Footer --- */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid var(--border);
+            background-color: #0b1120;
+            color: #64748b;
+        }
+
+        .footer-logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        footer strong { color: var(--accent); }
+
+        /* --- Responsive Design for Fluids --- */
+        @media (max-width: 768px) {
+            .hero { padding: 120px 20px 80px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .grid { gap: 20px; }
+            .app-card { padding: 30px; }
+        }
     </style>
 </head>
 <body>
+
+    <div class="ambient-sphere ambient-1"></div>
+    <div class="ambient-sphere ambient-2"></div>
 
     <section class="hero">
         <h1>Beyond Boring Software</h1>
@@ -35,29 +221,32 @@
 
     <div class="container">
         <div class="grid">
+            
             <a href="/mini-player" class="app-card">
                 <i class="fa-solid fa-play-circle app-icon"></i>
                 <h2>MiNi Player</h2>
-                <p>Pro HD video playback tool for all formats. Supports 4K, subtitle sync, and video pop-up.</p>
-            </a>
+                <p>Advanced HD video reproduction ecosystem. Engineered for 4K performance, universal codec compatibility, and seamless subtitle synchronization.</p>
+            </div>
 
             <div class="app-card">
                 <i class="fa-solid fa-music app-icon"></i>
                 <h2>Neon Music</h2>
-                <p>A vibrant, high-fidelity music player experience with custom equalization and neon aesthetics.</p>
+                <p>A vibrant, high-fidelity music experience featuring customized algorithmic equalization and a dynamic neon visualization aesthetic.</p>
             </div>
 
             <div class="app-card">
                 <i class="fa-solid fa-camera app-icon"></i>
                 <h2>Lenshot</h2>
-                <p>Advanced image-to-text conversion utility. Fast, accurate, and easy to use.</p>
+                <p>Next-gen image-to-text utility utilizing optical character recognition for fast, reliable data extraction.</p>
             </div>
+
         </div>
     </div>
 
     <footer>
-        &copy; 2026 Beyond Boring Software. All rights reserved.<br>
-        <a href="mailto:ayvidlabs@gmail.com" style="color: var(--primary); text-decoration: none;">Support Contact</a>
+        <div class="footer-logo">Beyond Boring <strong>Software</strong></div>
+        &copy; <script>document.write(new Date().getFullYear())</script> Project Portfolio. All rights reserved.<br><br>
+        <a href="mailto:ayvidlabs@gmail.com" style="color: var(--primary); text-decoration: none; font-weight: 600;">Technical Support</a>
     </footer>
 
 </body>
