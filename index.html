@@ -33,25 +33,27 @@
             overflow-x: hidden;
         }
 
-       /* --- Rock-Solid Sticky Glass Navbar --- */
+      /* --- Rock-Solid Sticky Jelly Navbar --- */
         nav {
-            position: fixed; /* Locks it to the screen */
+            position: fixed; /* Locks it to the viewport */
             top: 25px;
-            /* Safely centering without 'transform' to prevent scroll glitches */
             left: 0; 
             right: 0; 
             margin: 0 auto; 
             width: max-content;
             max-width: 90%;
             
-            /* Premium Glassmorphism for White Backgrounds */
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            /* Premium "White Jelly" Glassmorphism */
+            background: rgba(250, 252, 255, 0.65); /* Milky, slightly cool-toned white */
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
             
-            /* Subtle dark border and shadow make the glass pop against white */
-            border: 1px solid rgba(0, 0, 0, 0.08); 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            /* The Jelly Effect: Inner highlights + deep outer shadow */
+            border: 1px solid rgba(255, 255, 255, 0.9); 
+            box-shadow: 
+                inset 0 4px 10px rgba(255, 255, 255, 0.8), /* Top inner glossy highlight */
+                inset 0 -4px 10px rgba(0, 0, 0, 0.02),    /* Bottom inner volume */
+                0 15px 35px rgba(0, 0, 0, 0.08);          /* Deep outer shadow for separation */
             
             border-radius: 40px;
             padding: 12px 35px;
@@ -59,7 +61,7 @@
             justify-content: center;
             align-items: center;
             gap: 35px;
-            z-index: 9999; /* Forces it to stay above all other elements */
+            z-index: 9999; /* Forces it above all other elements */
         }
 
         nav a {
@@ -68,7 +70,7 @@
             font-size: 0.95rem;
             font-weight: 700;
             transition: color 0.2s;
-            white-space: nowrap; /* Prevents text from breaking onto two lines */
+            white-space: nowrap; 
         }
 
         nav a:hover { color: var(--accent); }
