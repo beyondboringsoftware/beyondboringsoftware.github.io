@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beyond Boring Software | Mobile App Development</title>
+    <title>Beyond Boring Software | Think Beyond. Build Better.</title>
+    <link rel="icon" type="image/png" href="https://play-lh.googleusercontent.com/YD2xSMMdQ7vD1HNa2EyWt2WOsnaKKoNOCukpYg0s9xf5MLYYZ57OpJ6jj7QdKdBWHubT=s188-rw" style="border-radius: 50%;">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --light-bg: #ffffff; 
-            --dark-bg: #0f1115; /* Deeper, more premium slate */
-            --card-bg: #181b21; /* Authentic dark mode card */
+            --dark-bg: #0f1115;
+            --card-bg: #181b21;
             --accent: #ff4500; /* Lava orange */
             --text-dark: #111827;
             --text-light: #f9fafb;
@@ -38,10 +39,10 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 40px;
             padding: 12px 35px;
             display: flex;
@@ -61,7 +62,7 @@
 
         nav a:hover { color: var(--accent); }
 
-        /* --- Light Hero Section --- */
+        /* --- Light Hero Section with Banner --- */
         .hero {
             background-color: var(--light-bg);
             padding: 130px 20px 0;
@@ -69,11 +70,13 @@
             position: relative;
         }
 
+        /* Fix for banner not showing: Using <img> tag instead of CSS background */
         .hero-banner {
-            max-width: 650px;
+            max-width: 700px;
             width: 100%;
             display: block;
             margin: 0 auto;
+            /* Ensures any background color in the image blends with white page */
             mix-blend-mode: multiply; 
         }
 
@@ -82,7 +85,7 @@
             width: 100%;
             line-height: 0;
             background-color: var(--light-bg);
-            margin-top: -5px; 
+            margin-top: -5px; /* Pull up slightly to overlap */
         }
         .curve-divider svg {
             display: block;
@@ -112,24 +115,34 @@
             line-height: 1.6;
         }
 
-        /* --- Products Grid --- */
+        /* --- Products Portfolio Grid --- */
         .products-wrapper {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: left;
         }
 
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin: 60px 0 30px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .category-title i { color: var(--accent); margin-right: 10px; }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
         }
 
-        /* Authentic App Card Styling */
         .app-card {
             background-color: var(--card-bg);
             border-radius: 24px;
-            padding: 35px;
+            padding: 30px;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
             display: flex;
@@ -150,50 +163,39 @@
             margin-bottom: 20px;
         }
 
-        /* Premium App Icon Placeholders */
-        .app-icon {
+        /* App Icon Styling */
+        .app-icon-img {
             width: 64px;
             height: 64px;
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: white;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
 
-        .icon-miniplayer { background: linear-gradient(135deg, #ff9201, #ff4500); }
-        .icon-neonmusic { background: linear-gradient(135deg, #007fbd, #00d2ff); }
-        .icon-lenshot { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-
         .app-title-group h3 { 
-            font-size: 1.3rem; 
+            font-size: 1.25rem; 
             font-weight: 700; 
             color: var(--text-light);
             margin-bottom: 4px; 
         }
         
-        .app-metrics {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .app-meta {
             font-size: 0.8rem;
             color: var(--text-muted);
             font-weight: 500;
         }
 
-        .star-rating i { color: #fbbf24; font-size: 0.75rem; }
+        .pro-badge { color: #fbbf24; font-weight: 700; margin-right: 5px; }
 
         .app-card p {
             font-size: 0.95rem;
             color: #d1d5db;
             line-height: 1.6;
             margin-bottom: 30px;
+            flex-grow: 1; /* Ensures buttons align even with different text lengths */
         }
 
-        /* Authentic Google Play Button */
-        .play-store-btn {
+        /* Premium Download Button */
+        .download-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -210,12 +212,12 @@
             width: 100%;
         }
 
-        .play-store-btn:hover {
+        .download-btn:hover {
             background-color: #2a2f3a;
             border-color: #4b5563;
         }
 
-        .play-store-btn i { font-size: 1.2rem; color: #34d399; }
+        .download-btn i { font-size: 1.2rem; color: #34d399; } /* Google Play green */
 
         /* --- Footer --- */
         footer {
@@ -225,27 +227,22 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        .company-info { display: flex; flex-direction: column; gap: 5px; }
         .company-info strong { color: var(--text-light); font-size: 1rem; }
 
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; transition: color 0.2s; }
         .footer-links a:hover { color: var(--accent); }
 
         @media (max-width: 768px) {
-            nav { width: 90%; gap: 15px; justify-content: center; flex-wrap: wrap; border-radius: 20px; }
+            nav { width: 95%; gap: 15px; justify-content: center; }
             footer { flex-direction: column; gap: 20px; text-align: center; }
             .hero { padding-top: 110px; }
+            .products-wrapper { padding: 0 10px; }
         }
     </style>
 </head>
@@ -253,12 +250,12 @@
 
     <nav>
         <a href="#">Home</a>
-        <a href="#products">Our Apps</a>
+        <a href="#portfolio">Portfolio</a>
         <a href="mailto:ayvidlabs@gmail.com">Support</a>
     </nav>
 
     <section class="hero">
-        <img src="http://googleusercontent.com/image_generation_content/2" alt="Beyond Boring Software" class="hero-banner">
+        <img src="https://play-lh.googleusercontent.com/b8vGb-tW4r4yLomFGD7Xc882zxe5-C_FPpgrfaoGJyoOfb5XGqFMA0ozr8_9D0NR-W0=w7680-h4320-rw" alt="Beyond Boring Software" class="hero-banner">
     </section>
 
     <div class="curve-divider">
@@ -267,88 +264,150 @@
         </svg>
     </div>
 
-    <section class="dark-section" id="products">
+    <section class="dark-section" id="portfolio">
         <h2>Think Beyond. Build Better.</h2>
-        <p class="subtitle">We build high-performance utility and media applications for the modern Android ecosystem. Discover our featured software below.</p>
+        <p class="subtitle">A full stack software ecosystem. Exploring innovative solutions in media, audio, and productivity.</p>
 
         <div class="products-wrapper">
+
+            <h3 class="category-title"><i class="fa-solid fa-star"></i> Premium Suite</h3>
             <div class="grid">
                 
                 <div class="app-card">
                     <div>
                         <div class="app-header">
-                            <div class="app-icon icon-miniplayer">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
+                            <img src="http://googleusercontent.com/image_generation_content/27f54c9e-5c4d-456d-8919-ca4587c67c54" class="app-icon-img" alt="Mini Player Pro Icon">
                             <div class="app-title-group">
-                                <h3>MiNi Player</h3>
-                                <div class="app-metrics">
-                                    <span class="star-rating"><i class="fa-solid fa-star"></i> 4.0</span>
-                                    <span>• Free | Video Players</span>
+                                <h3>Mini Player Pro</h3>
+                                <div class="app-meta">
+                                    <span class="pro-badge">$2.49</span> • Video Players
                                 </div>
                             </div>
                         </div>
-                        <p>A professional HD video playback tool engineered for all formats. Experience 4K rendering, seamless subtitle synchronization, and floating pop-up playback.</p>
+                        <p>The definitive ad-free video experience. Premium HD playback with 4K support, advanced subtitle syncing, and floating window controls.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.miniplayer" target="_blank" class="play-store-btn">
-                        <i class="fa-brands fa-google-play"></i> Get it on Google Play
+                    <a href="https://play.google.com/store/apps/details?id=org.hritik.miniplayerpro" target="_blank" class="download-btn">
+                        <i class="fa-brands fa-google-play"></i> View on Google Play
                     </a>
                 </div>
 
                 <div class="app-card">
                     <div>
                         <div class="app-header">
-                            <div class="app-icon icon-neonmusic">
-                                <i class="fa-solid fa-music"></i>
-                            </div>
+                            <img src="http://googleusercontent.com/image_generation_content/88b7754f-56f3-4e4d-862d-ca4587c67c54" class="app-icon-img" alt="Neon Music Pro Icon">
                             <div class="app-title-group">
-                                <h3>Neon Music</h3>
-                                <div class="app-metrics">
-                                    <span>Music & Audio</span>
-                                    <span>• Contains Ads</span>
+                                <h3>Neon Music Pro</h3>
+                                <div class="app-meta">
+                                    <span class="pro-badge">$2.49</span> • Music & Audio
                                 </div>
                             </div>
                         </div>
-                        <p>A vibrant, high-fidelity music player experience featuring customized algorithmic equalization, seamless library management, and a dynamic neon visualization aesthetic.</p>
+                        <p>Ad-free high-fidelity audio. Features premium algorithmic equalization, custom themes, and a sophisticated dynamic visualizer aesthetic.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.neonmusic" target="_blank" class="play-store-btn">
-                        <i class="fa-brands fa-google-play"></i> Get it on Google Play
+                    <a href="https://play.google.com/store/apps/details?id=org.hritik.neonmusicpro" target="_blank" class="download-btn">
+                        <i class="fa-brands fa-google-play"></i> View on Google Play
                     </a>
                 </div>
+            </div>
+
+            <h3 class="category-title"><i class="fa-solid fa-lightbulb"></i> Productivity & AI</h3>
+            <div class="grid">
 
                 <div class="app-card">
                     <div>
                         <div class="app-header">
-                            <div class="app-icon icon-lenshot">
-                                <i class="fa-solid fa-camera"></i>
-                            </div>
+                            <img src="http://googleusercontent.com/image_generation_content/073b302a-921c-423f-b631-ca4587c67c54" class="app-icon-img" alt="Lenshot Icon">
                             <div class="app-title-group">
                                 <h3>Lenshot</h3>
-                                <div class="app-metrics">
-                                    <span class="star-rating"><i class="fa-solid fa-star"></i> 5.0</span>
-                                    <span>• Productivity</span>
-                                </div>
+                                <div class="app-meta">5.0 Star • Productivity</div>
                             </div>
                         </div>
-                        <p>Advanced image-to-text conversion utility. Utilizing optical character recognition (OCR) for fast, highly accurate data extraction directly from your device's camera.</p>
+                        <p>Advanced image-to-text conversion (OCR). Extract highly accurate data directly from your camera or gallery for rapid digitizing.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.lenshot" target="_blank" class="play-store-btn">
-                        <i class="fa-brands fa-google-play"></i> Get it on Google Play
+                    <a href="https://play.google.com/store/apps/details?id=org.hritik.lenshot" target="_blank" class="download-btn">
+                        <i class="fa-brands fa-google-play"></i> View on Google Play
                     </a>
                 </div>
 
+                <div class="app-card">
+                    <div>
+                        <div class="app-header">
+                            <img src="http://googleusercontent.com/image_generation_content/c8c9f543-91ac-4690-bc66-ca4587c67c54" class="app-icon-img" alt="Jarvis Icon">
+                            <div class="app-title-group">
+                                <h3>Jarvis</h3>
+                                <div class="app-meta">1.9 Star • Productivity</div>
+                            </div>
+                        </div>
+                        <p>A sophisticated personal AI assistant designed to streamline your daily workflow through natural language processing and advanced task management.</p>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.beyondboringsoftware.jarvis" target="_blank" class="download-btn">
+                        <i class="fa-brands fa-google-play"></i> View on Google Play
+                    </a>
+                </div>
+
+                <div class="app-card">
+                    <div>
+                        <div class="app-header">
+                            <img src="http://googleusercontent.com/image_generation_content/363f0d01-5290-449e-ba78-ca4587c67c54" class="app-icon-img" alt="Jarvis Lite Icon">
+                            <div class="app-title-group">
+                                <h3>Jarvis Lite</h3>
+                                <div class="app-meta">Contains Ads • Productivity</div>
+                            </div>
+                        </div>
+                        <p>Experience the core efficiency of our flagship Jarvis AI in a lightweight package. Streamlined task management optimized for speed.</p>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=org.hritik.jarvis" target="_blank" class="download-btn">
+                        <i class="fa-brands fa-google-play"></i> View on Google Play
+                    </a>
+                </div>
             </div>
+
+            <h3 class="category-title"><i class="fa-solid fa-play-circle"></i> Media & Audio</h3>
+            <div class="grid">
+                
+                <div class="app-card">
+                    <div>
+                        <div class="app-header">
+                            <img src="http://googleusercontent.com/image_generation_content/93c1266e-5c4d-456d-8919-ca4587c67c54" class="app-icon-img" alt="Mini Player Icon">
+                            <div class="app-title-group">
+                                <h3>Mini Player</h3>
+                                <div class="app-meta">3.8 Star • Video Players</div>
+                            </div>
+                        </div>
+                        <p>Versatile all-format HD video player. Features 4K playback, subtitle download support, status saving, and floating video popup mode.</p>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=org.hritik.miniplayer" target="_blank" class="download-btn">
+                        <i class="fa-brands fa-google-play"></i> View on Google Play
+                    </a>
+                </div>
+
+                <div class="app-card">
+                    <div>
+                        <div class="app-header">
+                            <img src="http://googleusercontent.com/image_generation_content/8316109e-a86d-49f3-8086-ca4587c67c54" class="app-icon-img" alt="Neon Music Icon">
+                            <div class="app-title-group">
+                                <h3>Neon Music</h3>
+                                <div class="app-meta">3.4 Star • Music & Audio</div>
+                            </div>
+                        </div>
+                        <p>Vibrant music player experience. Enjoy robust library navigation, a precise graphic equalizer, and a unique visual aesthetic.</p>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=org.hritik.neonmusic" target="_blank" class="download-btn">
+                        <i class="fa-brands fa-google-play"></i> View on Google Play
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <footer>
         <div class="company-info">
             <strong>Beyond Boring Software</strong>
-            <span>© <script>document.write(new Date().getFullYear())</script> All Rights Reserved.</span>
+            <span>Think Beyond. Build Better.</span>
         </div>
         
         <div class="footer-links">
-            <a href="mailto:ayvidlabs@gmail.com">Contact Support</a>
             <a href="/app-ads.txt" target="_blank">app-ads.txt</a>
         </div>
     </footer>
