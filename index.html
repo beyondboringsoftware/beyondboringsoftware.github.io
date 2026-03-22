@@ -33,35 +33,30 @@
             overflow-x: hidden;
         }
 
-      /* --- Rock-Solid Sticky Jelly Navbar --- */
+        /* --- Rock-Solid Sticky Jelly Navbar --- */
         nav {
-            position: fixed; /* Locks it to the viewport */
+            position: fixed; 
             top: 25px;
             left: 0; 
             right: 0; 
             margin: 0 auto; 
             width: max-content;
             max-width: 90%;
-            
-            /* Premium "White Jelly" Glassmorphism */
-            background: rgba(250, 252, 255, 0.65); /* Milky, slightly cool-toned white */
+            background: rgba(250, 252, 255, 0.65); 
             backdrop-filter: blur(20px) saturate(150%);
             -webkit-backdrop-filter: blur(20px) saturate(150%);
-            
-            /* The Jelly Effect: Inner highlights + deep outer shadow */
             border: 1px solid rgba(255, 255, 255, 0.9); 
             box-shadow: 
-                inset 0 4px 10px rgba(255, 255, 255, 0.8), /* Top inner glossy highlight */
-                inset 0 -4px 10px rgba(0, 0, 0, 0.02),    /* Bottom inner volume */
-                0 15px 35px rgba(0, 0, 0, 0.08);          /* Deep outer shadow for separation */
-            
+                inset 0 4px 10px rgba(255, 255, 255, 0.8), 
+                inset 0 -4px 10px rgba(0, 0, 0, 0.02),    
+                0 15px 35px rgba(0, 0, 0, 0.08);          
             border-radius: 40px;
             padding: 12px 35px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 35px;
-            z-index: 9999; /* Forces it above all other elements */
+            z-index: 9999; 
         }
 
         nav a {
@@ -118,7 +113,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* Elevated Professional Copywriting */
         .subtitle {
             color: var(--text-muted);
             font-size: 1.1rem;
@@ -127,9 +121,9 @@
             line-height: 1.6;
         }
 
-        /* --- Products Portfolio Grid --- */
+        /* --- Products Portfolio (List Layout) --- */
         .products-wrapper {
-            max-width: 1200px;
+            max-width: 1000px; /* Slightly narrower for list view */
             margin: 0 auto;
             text-align: left;
         }
@@ -145,72 +139,109 @@
 
         .category-title i { color: var(--accent); margin-right: 10px; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .app-card {
-            background-color: var(--card-bg);
-            border-radius: 24px;
-            padding: 30px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+        .app-list {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* Premium Horizontal Card */
+        .app-card {
+            background: linear-gradient(145deg, var(--card-bg) 0%, #13151a 100%);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            align-items: center; /* Center horizontally */
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
         }
 
         .app-card:hover { 
-            transform: translateY(-5px); 
-            border-color: rgba(255, 69, 0, 0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .app-header {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            margin-bottom: 20px;
+            transform: translateX(8px); /* Slides right instead of lifting up */
+            border-color: rgba(255, 69, 0, 0.3);
+            background: linear-gradient(145deg, #1c2028 0%, #13151a 100%);
         }
 
         .app-icon-img {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .app-info {
+            flex-grow: 1;
         }
 
         .app-title-group h3 { 
-            font-size: 1.25rem; 
-            font-weight: 700; 
+            font-size: 1.4rem; 
+            font-weight: 800; 
             color: var(--text-light);
-            margin-bottom: 4px; 
+            margin-bottom: 6px; 
+            letter-spacing: -0.5px;
+        }
+
+        .app-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .price-badge { 
+            color: #111827; 
+            background-color: #34d399; /* Green for premium apps */
+            padding: 2px 8px; 
+            border-radius: 6px; 
+            font-size: 0.75rem; 
+            font-weight: 800; 
         }
         
-        .app-meta {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 500;
+        .free-badge {
+            color: #111827; 
+            background-color: #9ca3af; /* Gray for free apps */
+            padding: 2px 8px; 
+            border-radius: 6px; 
+            font-size: 0.75rem; 
+            font-weight: 800;
         }
 
-        .pro-badge { color: #fbbf24; font-weight: 700; margin-right: 5px; }
-
-        .app-card p {
+        .app-info p {
             font-size: 0.95rem;
-            color: #d1d5db;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            flex-grow: 1;
+            color: #9ca3af;
+            line-height: 1.5;
+            margin: 0;
+            max-width: 600px;
+        }
+
+        .app-action {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            min-width: 150px;
         }
 
         .download-btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: transparent;
+            gap: 8px;
+            background-color: rgba(255, 255, 255, 0.05);
             color: var(--text-light);
             padding: 12px 20px;
             border-radius: 12px;
@@ -219,90 +250,32 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
-            width: 100%;
+            white-space: nowrap;
         }
 
-        .download-btn:hover {
-            background-color: #2a2f3a;
-            border-color: #4b5563;
+        .download-btn:hover { 
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white; 
         }
 
-        .download-btn i { font-size: 1.2rem; color: #34d399; }
-
-        /* --- Professional Corporate Footer --- */
+        /* --- Clean Minimalist Footer --- */
         footer {
-            background-color: #08090a; /* Slightly darker than body for contrast */
+            background-color: #08090a;
             border-top: 1px solid var(--border-color);
-            padding: 80px 20px 40px;
+            padding: 60px 20px 30px;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand {
+        .footer-brand-container {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-        }
-
-        .footer-brand strong {
-            color: var(--text-light);
-            font-size: 1.3rem;
-            font-weight: 800;
-        }
-
-        .footer-brand p {
-            line-height: 1.5;
-            max-width: 300px;
-        }
-
-        .footer-col h4 {
-            color: var(--text-light);
-            font-weight: 700;
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
-
-        .footer-col a {
-            display: block;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-bottom: 12px;
-            transition: color 0.2s;
-        }
-
-        .footer-col a:hover { color: var(--accent); }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .footer-social a {
-            display: flex;
             align-items: center;
-            justify-content: center;
-            width: 35px;
-            height: 35px;
-            background-color: #181b21;
-            border-radius: 50%;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s;
-        }
-
-        .footer-social a:hover {
-            background-color: var(--accent);
-            color: white;
-            border-color: var(--accent);
+            gap: 15px;
         }
 
         .footer-bottom {
@@ -313,7 +286,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent);
         }
 
         .dev-badge {
@@ -325,17 +308,12 @@
             border-radius: 6px;
         }
 
-        @media (max-width: 900px) {
-            .footer-container { grid-template-columns: 1fr 1fr; }
-        }
-
         @media (max-width: 768px) {
             nav { width: 95%; gap: 15px; justify-content: center; padding: 10px 20px;}
             .hero { padding-top: 110px; }
-            .products-wrapper { padding: 0 10px; }
-            .footer-container { grid-template-columns: 1fr; text-align: center; }
-            .footer-brand p { margin: 0 auto; }
-            .footer-social { justify-content: center; }
+            .app-card { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .app-action { width: 100%; align-items: flex-start; }
+            .download-btn { width: 100%; justify-content: center; }
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
@@ -365,152 +343,174 @@
         <div class="products-wrapper">
 
             <h3 class="category-title"><i class="fa-solid fa-star"></i> Premium Suite</h3>
-            <div class="grid">
+            <div class="app-list">
                 
                 <div class="app-card">
-                    <div>
-                        <div class="app-header">
-                            <img src="https://play-lh.googleusercontent.com/hx3CBd_NT2jI0dI26NWRAxgr8DuF53JL0y1o1md49_QFOWP7NB5HCtl3aa_scbpanJ42=s512-rw" class="app-icon-img" alt="Mini Player Pro Icon">
-                            <div class="app-title-group">
-                                <h3>Mini Player Pro</h3>
-                                <div class="app-meta">
-                                    <span class="pro-badge">$2.49</span> • Video Players
-                                </div>
+                    <img src="https://play-lh.googleusercontent.com/hx3CBd_NT2jI0dI26NWRAxgr8DuF53JL0y1o1md49_QFOWP7NB5HCtl3aa_scbpanJ42=s512-rw" class="app-icon-img" alt="Mini Player Pro Icon">
+                    <div class="app-info">
+                        <div class="app-title-group">
+                            <h3>Mini Player Pro</h3>
+                            <div class="app-meta">
+                                <span class="price-badge">$2.49</span>
+                                <span><i class="fa-solid fa-star" style="color: #fbbf24; font-size: 0.8em;"></i> 4.8 • Video Player</span>
                             </div>
                         </div>
                         <p>The definitive ad-free video experience. Premium HD playback with 4K support, advanced subtitle syncing, and floating window controls.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.miniplayerpro" target="_blank" class="download-btn">
-                        <i class="fa-brands fa-google-play"></i> View on Google Play
-                    </a>
+                    <div class="app-action">
+                        <a href="https://play.google.com/store/apps/details?id=org.hritik.miniplayerpro" target="_blank" class="download-btn">
+                            Get on Play Store
+                        </a>
+                    </div>
                 </div>
 
                 <div class="app-card">
-                    <div>
-                        <div class="app-header">
-                            <img src="https://play-lh.googleusercontent.com/9Yc5kttLoNBi48H-0awHlvE7YjfsmdVFIqlksspiHWvSBsnXICBr3q1feDt9dNiwgT69=s512-rw" class="app-icon-img" alt="Neon Music Pro Icon">
-                            <div class="app-title-group">
-                                <h3>Neon Music Pro</h3>
-                                <div class="app-meta">
-                                    <span class="pro-badge">$2.49</span> • Music & Audio
-                                </div>
+                    <img src="https://play-lh.googleusercontent.com/9Yc5kttLoNBi48H-0awHlvE7YjfsmdVFIqlksspiHWvSBsnXICBr3q1feDt9dNiwgT69=s512-rw" class="app-icon-img" alt="Neon Music Pro Icon">
+                    <div class="app-info">
+                        <div class="app-title-group">
+                            <h3>Neon Music Pro</h3>
+                            <div class="app-meta">
+                                <span class="price-badge">$2.49</span>
+                                <span><i class="fa-solid fa-star" style="color: #fbbf24; font-size: 0.8em;"></i> 4.7 • Music & Audio</span>
                             </div>
                         </div>
                         <p>Ad-free high-fidelity audio. Features premium algorithmic equalization, custom themes, and a sophisticated dynamic visualizer aesthetic.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.neonmusicpro" target="_blank" class="download-btn">
-                        <i class="fa-brands fa-google-play"></i> View on Google Play
-                    </a>
+                    <div class="app-action">
+                        <a href="https://play.google.com/store/apps/details?id=org.hritik.neonmusicpro" target="_blank" class="download-btn">
+                            Get on Play Store
+                        </a>
+                    </div>
                 </div>
+
             </div>
 
             <h3 class="category-title"><i class="fa-solid fa-lightbulb"></i> Productivity & AI</h3>
-            <div class="grid">
+            <div class="app-list">
 
                 <div class="app-card">
-                    <div>
-                        <div class="app-header">
-                            <img src="https://play-lh.googleusercontent.com/01YQ8fx33tgPEvuxRw8J_U0q0651qgy8yD2qC2s_kAZ3kFvH8xrv9UxsQgldDPHTZg=s512-rw" class="app-icon-img" alt="Lenshot Icon">
-                            <div class="app-title-group">
-                                <h3>Lenshot</h3>
-                                <div class="app-meta">5.0 Star • Productivity</div>
+                    <img src="https://play-lh.googleusercontent.com/01YQ8fx33tgPEvuxRw8J_U0q0651qgy8yD2qC2s_kAZ3kFvH8xrv9UxsQgldDPHTZg=s512-rw" class="app-icon-img" alt="Lenshot Icon">
+                    <div class="app-info">
+                        <div class="app-title-group">
+                            <h3>Lenshot</h3>
+                            <div class="app-meta">
+                                <span class="free-badge">Free</span>
+                                
+                                <span><i class="fa-solid fa-star" style="color: #fbbf24; font-size: 0.8em;"></i> 5.0 • Utility</span>
                             </div>
                         </div>
-                        <p>Advanced image-to-text conversion (OCR). Extract highly accurate data directly from your camera or gallery for rapid digitizing.</p>
+                        <p>Advanced OCR technology. Extract highly accurate text data directly from your camera or gallery for rapid digitizing.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.lenshot" target="_blank" class="download-btn">
-                        <i class="fa-brands fa-google-play"></i> View on Google Play
-                    </a>
+                    <div class="app-action">
+                        <a href="https://play.google.com/store/apps/details?id=org.hritik.lenshot" target="_blank" class="download-btn">
+                            Get on Play Store
+                        </a>
+                    </div>
                 </div>
 
                 <div class="app-card">
-                    <div>
-                        <div class="app-header">
-                            <img src="https://play-lh.googleusercontent.com/iZCCVp69aYt_iYCnMStqtRNVbiH2epMX5AHH0XZCdaOkZx492WTwWsDL2nKvuUn0t-jv=s512-rw" class="app-icon-img" alt="Jarvis Icon">
-                            <div class="app-title-group">
-                                <h3>Jarvis</h3>
-                                <div class="app-meta">3.0 Star • Productivity</div>
+                    <img src="https://play-lh.googleusercontent.com/iZCCVp69aYt_iYCnMStqtRNVbiH2epMX5AHH0XZCdaOkZx492WTwWsDL2nKvuUn0t-jv=s512-rw" class="app-icon-img" alt="Jarvis Icon">
+                    <div class="app-info">
+                        <div class="app-title-group">
+                            <h3>Jarvis</h3>
+                            <div class="app-meta">
+                                <span class="price-badge">Premium</span>
+                                <span><i class="fa-solid fa-star" style="color: #fbbf24; font-size: 0.8em;"></i> 3.0 • Productivity</span>
                             </div>
                         </div>
-                        <p>A sophisticated personal AI assistant designed to streamline your daily workflow through natural language processing and advanced task management.</p>
+                        <p>A sophisticated personal AI assistant designed to streamline your daily workflow through natural language processing.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=com.beyondboringsoftware.jarvis" target="_blank" class="download-btn">
-                        <i class="fa-brands fa-google-play"></i> View on Google Play
-                    </a>
+                    <div class="app-action">
+                        <a href="https://play.google.com/store/apps/details?id=org.hritik.jarvis" target="_blank" class="download-btn">
+                            Get on Play Store
+                        </a>
+                    </div>
                 </div>
 
                 <div class="app-card">
-                    <div>
-                        <div class="app-header">
-                            <img src="https://play-lh.googleusercontent.com/0WeklWwZNkWJAzVbuCQxa4x9bs0L_CamiEEYdZc8cf8UThy9CxiwbwOu_HAjisQ4mrU=s512-rw" class="app-icon-img" alt="Jarvis Lite Icon">
-                            <div class="app-title-group">
-                                <h3>Jarvis Lite</h3>
-                                <div class="app-meta">4.0 Star • Productivity</div>
+                    <img src="https://play-lh.googleusercontent.com/0WeklWwZNkWJAzVbuCQxa4x9bs0L_CamiEEYdZc8cf8UThy9CxiwbwOu_HAjisQ4mrU=s512-rw" class="app-icon-img" alt="Jarvis Lite Icon">
+                    <div class="app-info">
+                        <div class="app-title-group">
+                            <h3>Jarvis Lite</h3>
+                            <div class="app-meta">
+                                <span class="price-badge">Premium</span>
+                                <span><i class="fa-solid fa-star" style="color: #fbbf24; font-size: 0.8em;"></i> 4.0 • Productivity</span>
                             </div>
                         </div>
-                        <p>Experience the core efficiency of our flagship Jarvis AI in a lightweight package. Streamlined task management optimized for speed.</p>
+                        <p>Experience the core efficiency of our flagship Jarvis AI in a lightweight package optimized for maximum speed.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.jarvis" target="_blank" class="download-btn">
-                        <i class="fa-brands fa-google-play"></i> View on Google Play
-                    </a>
+                    <div class="app-action">
+                        <a href="https://play.google.com/store/apps/details?id=org.hritik.jarvislite" target="_blank" class="download-btn">
+                            Get on Play Store
+                        </a>
+                    </div>
                 </div>
+
             </div>
 
             <h3 class="category-title"><i class="fa-solid fa-play-circle"></i> Media & Audio</h3>
-            <div class="grid">
+            <div class="app-list">
                 
                 <div class="app-card">
-                    <div>
-                        <div class="app-header">
-                            <img src="https://play-lh.googleusercontent.com/hx3CBd_NT2jI0dI26NWRAxgr8DuF53JL0y1o1md49_QFOWP7NB5HCtl3aa_scbpanJ42=s512-rw" class="app-icon-img" alt="Mini Player Icon">
-                            <div class="app-title-group">
-                                <h3>Mini Player</h3>
-                                <div class="app-meta">3.8 Star • Video Players</div>
+                    <img src="https://play-lh.googleusercontent.com/hx3CBd_NT2jI0dI26NWRAxgr8DuF53JL0y1o1md49_QFOWP7NB5HCtl3aa_scbpanJ42=s512-rw" class="app-icon-img" alt="Mini Player Icon">
+                    <div class="app-info">
+                        <div class="app-title-group">
+                            <h3>Mini Player</h3>
+                            <div class="app-meta">
+                                <span class="free-badge">Free</span>
+                                <span><i class="fa-solid fa-star" style="color: #fbbf24; font-size: 0.8em;"></i> 3.8 • Video Player</span>
                             </div>
                         </div>
-                        <p>Versatile all-format HD video player. Features 4K playback, subtitle download support, status saving, and floating video popup mode.</p>
+                        <p>Versatile all-format HD video player. Features 4K playback, subtitle download support, and floating popup mode.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.miniplayer" target="_blank" class="download-btn">
-                        <i class="fa-brands fa-google-play"></i> View on Google Play
-                    </a>
+                    <div class="app-action">
+                        <a href="https://play.google.com/store/apps/details?id=org.hritik.miniplayer" target="_blank" class="download-btn">
+                            Get on Play Store
+                        </a>
+                    </div>
                 </div>
 
                 <div class="app-card">
-                    <div>
-                        <div class="app-header">
-                            <img src="https://play-lh.googleusercontent.com/9Yc5kttLoNBi48H-0awHlvE7YjfsmdVFIqlksspiHWvSBsnXICBr3q1feDt9dNiwgT69=s512-rw" class="app-icon-img" alt="Neon Music Icon">
-                            <div class="app-title-group">
-                                <h3>Neon Music</h3>
-                                <div class="app-meta">3.4 Star • Music & Audio</div>
+                    <img src="https://play-lh.googleusercontent.com/9Yc5kttLoNBi48H-0awHlvE7YjfsmdVFIqlksspiHWvSBsnXICBr3q1feDt9dNiwgT69=s512-rw" class="app-icon-img" alt="Neon Music Icon">
+                    <div class="app-info">
+                        <div class="app-title-group">
+                            <h3>Neon Music</h3>
+                            <div class="app-meta">
+                                <span class="free-badge">Free</span>
+                                <span><i class="fa-solid fa-star" style="color: #fbbf24; font-size: 0.8em;"></i> 3.4 • Music & Audio</span>
                             </div>
                         </div>
                         <p>Vibrant music player experience. Enjoy robust library navigation, a precise graphic equalizer, and a unique visual aesthetic.</p>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=org.hritik.neonmusic" target="_blank" class="download-btn">
-                        <i class="fa-brands fa-google-play"></i> View on Google Play
-                    </a>
+                    <div class="app-action">
+                        <a href="https://play.google.com/store/apps/details?id=org.hritik.neonmusic" target="_blank" class="download-btn">
+                            Get on Play Store
+                        </a>
+                    </div>
                 </div>
+
             </div>
 
         </div>
     </section>
 
     <footer>
-        <div class="footer-brand">
-    <strong style="font-size: 1.2rem; color: var(--text-light);">About the Studio</strong>
-    <p>An independent development team dedicated to transforming everyday mobile utilities into refined, high-performance applications.</p>
-    
-    <div style="margin-top: 20px;">
-        <a href="mailto:ayvidlabs@gmail.com" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid #4b5563; border-radius: 30px; padding: 10px 25px; color: #f9fafb; font-size: 0.95rem; font-weight: 600; background: transparent; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff4500'; this.style.color='#ff4500'" onmouseout="this.style.borderColor='#4b5563'; this.style.color='#f9fafb'">
-            <i class="fa-regular fa-envelope"></i> Contact Studio
-        </a>
-    </div>
-</div>
+        <div class="footer-brand-container">
+            <strong style="font-size: 1.2rem; color: var(--text-light);">About the Studio</strong>
+            <p>An independent development team dedicated to transforming everyday mobile utilities into refined, high-performance applications.</p>
+            
+            <div style="margin-top: 20px;">
+                <a href="mailto:ayvidlabs@gmail.com" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid #4b5563; border-radius: 30px; padding: 10px 25px; color: #f9fafb; font-size: 0.95rem; font-weight: 600; background: transparent; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff4500'; this.style.color='#ff4500'" onmouseout="this.style.borderColor='#4b5563'; this.style.color='#f9fafb'">
+                    <i class="fa-regular fa-envelope"></i> Contact Studio
+                </a>
+            </div>
+        </div>
 
         <div class="footer-bottom">
             <div>
-                &copy; <script>document.write(new Date().getFullYear())</script> Beyond Boring Software. All rights reserved.
+                © <script>document.write(new Date().getFullYear())</script> Beyond Boring Software. All rights reserved.
             </div>
+            
             <div class="dev-badge">
                 <i class="fa-brands fa-google-play" style="color: #3b82f6;"></i> Verified Developer
             </div>
