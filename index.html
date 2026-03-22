@@ -4,129 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beyond Boring Software - Think Beyond. Build Better.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* Your official brand colors */
-            --primary: #007fbd; /* Brand Blue */
-            --accent: #ff9201;  /* Badge Orange */
-            --bg-deep: #0f172a;
-            --bg-card: #1e293b;
+            --bg-base: #0a0a0c;
+            --bg-card: #151518;
+            --accent: #ff4500; /* Lava Orange */
+            --accent-glow: rgba(255, 69, 0, 0.15);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border: #334155;
+            --border: #26262a;
         }
 
-        /* --- Global Reset & Fluids --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
-            scroll-behavior: smooth; /* Modern fluid scrolling */
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-deep);
+            background-color: var(--bg-base);
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* --- Animated Fluid Accents in Background --- */
-        .ambient-sphere {
+        /* --- Floating Glass Navbar --- */
+        nav {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.2;
-            animation: fluidDrift 20s infinite alternate ease-in-out;
-        }
-        
-        /* Ambient Blue Sphere */
-        .ambient-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            top: -100px;
-            left: -100px;
-        }
-
-        /* Ambient Orange Sphere */
-        .ambient-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            bottom: 10%;
-            right: -100px;
-            animation-delay: -5s; /* Non-synchronized animation */
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            padding: 12px 30px;
+            display: flex;
+            gap: 30px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        @keyframes fluidDrift {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, 50px) scale(1.1); }
-            100% { transform: translate(-20px, 20px) scale(0.9); }
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
-        /* --- Updated Hero with Banner Integration --- */
+        nav a:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
         .hero {
-            position: relative;
-            text-align: center;
-            padding: 160px 20px 100px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* Integrating your provided Play Store Banner URL */
-            background-image: url('https://play-lh.googleusercontent.com/b8vGb-tW4r4yLomFGD7Xc882zxe5-C_FPpgrfaoGJyoOfb5XGqFMA0ozr8_9D0NR-W0=w7680-h4320-rw');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            border-bottom: 2px solid var(--border);
+            padding: 120px 20px 60px;
+            background: radial-gradient(circle at center, #15151a 0%, #0a0a0c 70%);
+            text-align: center;
         }
 
-        /* Dark overlay to make text pop over the banner */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 1) 100%);
-            z-index: 1;
+        /* 3D Banner Image Styling */
+        .hero-banner {
+            max-width: 450px;
+            width: 100%;
+            margin-bottom: 2rem;
+            /* Creates a subtle glowing shadow behind the volcano */
+            filter: drop-shadow(0 20px 40px var(--accent-glow));
+            animation: float 6s ease-in-out infinite;
         }
 
-        .hero * { position: relative; z-index: 2; } /* Put content above overlay */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: -2px;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, white, #cbd5e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 30px;
         }
 
-        .hero p {
-            color: #cbd5e1;
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-bottom: 0px;
-            max-width: 600px;
+        .cta-btn {
+            padding: 14px 35px;
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            background: transparent;
+            color: var(--text-main);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
-        /* --- Main Apps Grid & Cards --- */
-        .container {
+        .cta-btn:hover {
+            background: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: scale(1.05);
+        }
+
+        /* --- Projects Section --- */
+        .projects-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             padding: 80px 20px;
         }
 
+        .section-header {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
         }
 
         .app-card {
@@ -136,117 +140,167 @@
             border: 1px solid var(--border);
             text-decoration: none;
             color: inherit;
-            display: block;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Professional easing */
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
 
-        /* Modern subtle halo effect on hover */
-        .app-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(0, 127, 189, 0.1) 0%, rgba(15, 23, 42, 0) 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
         .app-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 127, 189, 0.15);
+            border-color: rgba(255, 69, 0, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .app-card:hover::after { opacity: 1; }
-
-        .app-icon {
-            font-size: 50px;
-            color: var(--accent);
-            margin-bottom: 25px;
-            display: inline-block;
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        .app-card h2 {
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-            font-weight: 800;
+        .app-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1e1e24, #2a2a32);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: 1px solid var(--border);
         }
+
+        .icon-orange { color: var(--accent); }
+        .icon-blue { color: #007fbd; }
+        .icon-purple { color: #8b5cf6; }
+
+        .app-title { font-size: 1.4rem; font-weight: 800; }
+        .app-badge { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
 
         .app-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.7;
-            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
 
-        /* --- Studio Footer --- */
-        footer {
-            text-align: center;
-            padding: 80px 20px;
-            border-top: 1px solid var(--border);
-            background-color: #0b1120;
-            color: #64748b;
-        }
-
-        .footer-logo {
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--text-main);
-            margin-bottom: 10px;
+        .read-more {
             display: inline-block;
+            padding: 8px 20px;
+            background: #1e1e24;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: 0.3s;
         }
 
-        footer strong { color: var(--accent); }
+        .app-card:hover .read-more {
+            background: var(--text-main);
+            color: var(--bg-base);
+        }
 
-        /* --- Responsive Design for Fluids --- */
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--text-main); }
+
         @media (max-width: 768px) {
-            .hero { padding: 120px 20px 80px; }
-            .hero h1 { font-size: 2.8rem; }
-            .hero p { font-size: 1.1rem; }
-            .grid { gap: 20px; }
-            .app-card { padding: 30px; }
+            nav { width: 90%; justify-content: space-between; gap: 10px; padding: 12px 20px; }
+            .hero-banner { max-width: 300px; }
+            .hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="ambient-sphere ambient-1"></div>
-    <div class="ambient-sphere ambient-2"></div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#projects">Our Apps</a>
+        <a href="mailto:ayvidlabs@gmail.com">Contact Us</a>
+    </nav>
 
     <section class="hero">
-        <h1>Beyond Boring Software</h1>
-        <p>Think Beyond. Build Better.</p>
+        <img src="https://play-lh.googleusercontent.com/b8vGb-tW4r4yLomFGD7Xc882zxe5-C_FPpgrfaoGJyoOfb5XGqFMA0ozr8_9D0NR-W0=w7680-h4320-rw" alt="Beyond Boring Software Banner" class="hero-banner">
+        
+        <h1>Think Beyond. Build Better.</h1>
+        <a href="#projects" class="cta-btn">Explore Our Portfolio</a>
     </section>
 
-    <div class="container">
+    <section id="projects" class="projects-wrapper">
+        <h2 class="section-header">Our Projects</h2>
+        
         <div class="grid">
-            
             <a href="/mini-player" class="app-card">
-                <i class="fa-solid fa-play-circle app-icon"></i>
-                <h2>MiNi Player</h2>
-                <p>Advanced HD video reproduction ecosystem. Engineered for 4K performance, universal codec compatibility, and seamless subtitle synchronization.</p>
-            </div>
+                <div class="app-header">
+                    <div class="app-icon-wrapper icon-orange">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <div>
+                        <div class="app-title">MiNi Player</div>
+                        <div class="app-badge">Free | Android</div>
+                    </div>
+                </div>
+                <p>Pro HD video playback tool engineered for all formats. Supports 4K rendering, seamless subtitle synchronization, and video pop-up.</p>
+                <div class="read-more">View Details</div>
+            </a>
 
-            <div class="app-card">
-                <i class="fa-solid fa-music app-icon"></i>
-                <h2>Neon Music</h2>
-                <p>A vibrant, high-fidelity music experience featuring customized algorithmic equalization and a dynamic neon visualization aesthetic.</p>
-            </div>
+            <a href="#" class="app-card">
+                <div class="app-header">
+                    <div class="app-icon-wrapper icon-blue">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                    <div>
+                        <div class="app-title">Neon Music</div>
+                        <div class="app-badge">Free | Android</div>
+                    </div>
+                </div>
+                <p>A vibrant, high-fidelity music player experience featuring custom algorithmic equalization and a dynamic neon visualization aesthetic.</p>
+                <div class="read-more">Coming Soon</div>
+            </a>
 
-            <div class="app-card">
-                <i class="fa-solid fa-camera app-icon"></i>
-                <h2>Lenshot</h2>
-                <p>Next-gen image-to-text utility utilizing optical character recognition for fast, reliable data extraction.</p>
-            </div>
-
+            <a href="#" class="app-card">
+                <div class="app-header">
+                    <div class="app-icon-wrapper icon-purple">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <div>
+                        <div class="app-title">Lenshot</div>
+                        <div class="app-badge">Free | Android</div>
+                    </div>
+                </div>
+                <p>Advanced image-to-text conversion utility. Utilizing optical character recognition for fast, highly accurate data extraction.</p>
+                <div class="read-more">Coming Soon</div>
+            </a>
         </div>
-    </div>
+    </section>
 
     <footer>
-        <div class="footer-logo">Beyond Boring <strong>Software</strong></div>
-        &copy; <script>document.write(new Date().getFullYear())</script> Project Portfolio. All rights reserved.<br><br>
-        <a href="mailto:ayvidlabs@gmail.com" style="color: var(--primary); text-decoration: none; font-weight: 600;">Technical Support</a>
+        <div class="footer-links">
+            <a href="mailto:ayvidlabs@gmail.com">Support</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+        <p>Copyright © <script>document.write(new Date().getFullYear())</script> Beyond Boring Software. All rights reserved.</p>
     </footer>
 
 </body>
