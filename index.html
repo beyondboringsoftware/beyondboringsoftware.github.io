@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beyond Boring Software | Think Beyond. Build Better.</title>
+    <title>Beyond Boring Software | Mobile App Development</title>
     <link rel="icon" type="image/png" href="https://play-lh.googleusercontent.com/YD2xSMMdQ7vD1HNa2EyWt2WOsnaKKoNOCukpYg0s9xf5MLYYZ57OpJ6jj7QdKdBWHubT=s188-rw" style="border-radius: 50%;">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,50 +33,59 @@
             overflow-x: hidden;
         }
 
-        /* --- Glass Navbar --- */
+       /* --- Rock-Solid Sticky Glass Navbar --- */
         nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: fixed; /* Locks it to the screen */
+            top: 25px;
+            /* Safely centering without 'transform' to prevent scroll glitches */
+            left: 0; 
+            right: 0; 
+            margin: 0 auto; 
+            width: max-content;
+            max-width: 90%;
+            
+            /* Premium Glassmorphism for White Backgrounds */
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            
+            /* Subtle dark border and shadow make the glass pop against white */
+            border: 1px solid rgba(0, 0, 0, 0.08); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            
             border-radius: 40px;
             padding: 12px 35px;
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 30px;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            gap: 35px;
+            z-index: 9999; /* Forces it to stay above all other elements */
         }
 
         nav a {
             color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             transition: color 0.2s;
+            white-space: nowrap; /* Prevents text from breaking onto two lines */
         }
 
         nav a:hover { color: var(--accent); }
 
-        /* --- Light Hero Section with Banner --- */
+        /* --- Light Hero Section --- */
         .hero {
             background-color: var(--light-bg);
-            padding: 130px 20px 0;
+            padding: 140px 20px 0;
             text-align: center;
             position: relative;
         }
 
-        /* Fix for banner not showing: Using <img> tag instead of CSS background */
         .hero-banner {
             max-width: 700px;
             width: 100%;
             display: block;
             margin: 0 auto;
-            /* Ensures any background color in the image blends with white page */
             mix-blend-mode: multiply; 
         }
 
@@ -85,7 +94,7 @@
             width: 100%;
             line-height: 0;
             background-color: var(--light-bg);
-            margin-top: -5px; /* Pull up slightly to overlap */
+            margin-top: -5px; 
         }
         .curve-divider svg {
             display: block;
@@ -107,10 +116,11 @@
             letter-spacing: -0.5px;
         }
 
+        /* Elevated Professional Copywriting */
         .subtitle {
             color: var(--text-muted);
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 60px auto;
             line-height: 1.6;
         }
@@ -163,7 +173,6 @@
             margin-bottom: 20px;
         }
 
-        /* App Icon Styling */
         .app-icon-img {
             width: 64px;
             height: 64px;
@@ -191,10 +200,9 @@
             color: #d1d5db;
             line-height: 1.6;
             margin-bottom: 30px;
-            flex-grow: 1; /* Ensures buttons align even with different text lengths */
+            flex-grow: 1;
         }
 
-        /* Premium Download Button */
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -217,32 +225,116 @@
             border-color: #4b5563;
         }
 
-        .download-btn i { font-size: 1.2rem; color: #34d399; } /* Google Play green */
+        .download-btn i { font-size: 1.2rem; color: #34d399; }
 
-        /* --- Footer --- */
+        /* --- Professional Corporate Footer --- */
         footer {
+            background-color: #08090a; /* Slightly darker than body for contrast */
             border-top: 1px solid var(--border-color);
-            padding: 50px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            font-size: 0.85rem;
+            padding: 80px 20px 40px;
             color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        .company-info strong { color: var(--text-light); font-size: 1rem; }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
 
-        .footer-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--accent); }
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-brand strong {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .footer-brand p {
+            line-height: 1.5;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: var(--text-light);
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--accent); }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: #181b21;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .dev-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 900px) {
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
 
         @media (max-width: 768px) {
-            nav { width: 95%; gap: 15px; justify-content: center; }
-            footer { flex-direction: column; gap: 20px; text-align: center; }
+            nav { width: 95%; gap: 15px; justify-content: center; padding: 10px 20px;}
             .hero { padding-top: 110px; }
             .products-wrapper { padding: 0 10px; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand p { margin: 0 auto; }
+            .footer-social { justify-content: center; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
@@ -250,8 +342,8 @@
 
     <nav>
         <a href="#">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="mailto:ayvidlabs@gmail.com">Support</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="mailto:ayvidlabs@gmail.com">Contact</a>
     </nav>
 
     <section class="hero">
@@ -264,9 +356,9 @@
         </svg>
     </div>
 
-    <section class="dark-section" id="portfolio">
+    <section class="dark-section" id="ecosystem">
         <h2>Think Beyond. Build Better.</h2>
-        <p class="subtitle">A full stack software ecosystem. Exploring innovative solutions in media, audio, and productivity.</p>
+        <p class="subtitle">Engineering high-performance mobile utilities. We specialize in robust media processing, AI-driven productivity, and seamless user experiences tailored for the Android platform.</p>
 
         <div class="products-wrapper">
 
@@ -402,13 +494,24 @@
     </section>
 
     <footer>
-        <div class="company-info">
-            <strong>Beyond Boring Software</strong>
-            <span>Think Beyond. Build Better.</span>
-        </div>
-        
-        <div class="footer-links">
-            <a href="/app-ads.txt" target="_blank">app-ads.txt</a>
+        <div class="footer-brand">
+    <strong style="font-size: 1.2rem; color: var(--text-light);">About the Studio</strong>
+    <p>An independent development team dedicated to transforming everyday mobile utilities into refined, high-performance applications.</p>
+    
+    <div style="margin-top: 20px;">
+        <a href="mailto:ayvidlabs@gmail.com" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid #4b5563; border-radius: 30px; padding: 10px 25px; color: #f9fafb; font-size: 0.95rem; font-weight: 600; background: transparent; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff4500'; this.style.color='#ff4500'" onmouseout="this.style.borderColor='#4b5563'; this.style.color='#f9fafb'">
+            <i class="fa-regular fa-envelope"></i> Contact Studio
+        </a>
+    </div>
+</div>
+
+        <div class="footer-bottom">
+            <div>
+                &copy; <script>document.write(new Date().getFullYear())</script> Beyond Boring Software. All rights reserved.
+            </div>
+            <div class="dev-badge">
+                <i class="fa-brands fa-google-play" style="color: #3b82f6;"></i> Verified Developer
+            </div>
         </div>
     </footer>
 
