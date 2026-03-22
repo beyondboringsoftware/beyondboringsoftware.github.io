@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Boring Software - Think Beyond. Build Better.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #007fbd; --accent: #ff9201; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; }
+        
+        .hero { text-align: center; padding: 100px 20px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
+        .hero p { color: #cbd5e1; font-size: 1.2rem; margin-bottom: 30px; }
 
+        .container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        .app-card { background: var(--card); border-radius: 20px; padding: 30px; border: 1px solid #334155; transition: 0.3s; text-decoration: none; color: inherit; display: block; }
+        .app-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .app-icon { font-size: 40px; color: var(--accent); margin-bottom: 20px; }
+        .app-card h2 { margin-bottom: 10px; font-size: 1.5rem; }
+        .app-card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid #334155; color: #64748b; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>Beyond Boring Software</h1>
+        <p>Think Beyond. Build Better.</p>
+    </section>
+
+    <div class="container">
+        <div class="grid">
+            <a href="/mini-player" class="app-card">
+                <i class="fa-solid fa-play-circle app-icon"></i>
+                <h2>MiNi Player</h2>
+                <p>Pro HD video playback tool for all formats. Supports 4K, subtitle sync, and video pop-up.</p>
+            </a>
+
+            <div class="app-card">
+                <i class="fa-solid fa-music app-icon"></i>
+                <h2>Neon Music</h2>
+                <p>A vibrant, high-fidelity music player experience with custom equalization and neon aesthetics.</p>
+            </div>
+
+            <div class="app-card">
+                <i class="fa-solid fa-camera app-icon"></i>
+                <h2>Lenshot</h2>
+                <p>Advanced image-to-text conversion utility. Fast, accurate, and easy to use.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Beyond Boring Software. All rights reserved.<br>
+        <a href="mailto:ayvidlabs@gmail.com" style="color: var(--primary); text-decoration: none;">Support Contact</a>
+    </footer>
+
+</body>
+</html>
